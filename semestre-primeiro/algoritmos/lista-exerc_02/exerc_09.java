@@ -2,25 +2,28 @@ package espm_algoritmos.lista_exerc2;
 
 import java.util.Scanner;
 
-public class Exerc08 {
+public class Exerc09 {
 	public static void main(String[] args) {
 
-		double valor_compra, desconto;
+		double aux;
 
 		Scanner sentinela = new Scanner(System.in);
 
-		System.out.println("Qual é o valor da compra do cliente?");
-		valor_compra = sentinela.nextDouble();
+		System.out.println("Qual é a sua renda anual?");
+		aux = sentinela.nextDouble();
 
-		if (valor_compra >= 350.00) {
-			desconto = 0.22 * valor_compra;
-			valor_compra = 0.78 * valor_compra;
+		if (aux <= 10000.00) {
+			System.out.println("\nSituação: Isento de imposto.");
+		} else if (aux <= 25000.00) {
+			aux = 0.1035 * aux;
+			System.out.printf("\nSituação: Alíquota = R$%.2f", aux);
+		} else if (aux <= 50000.00) {
+			aux = 0.2542 * aux;
+			System.out.printf("\nSituação: Alíquota = R$%.2f", aux);
 		} else {
-			desconto = 0.15 * valor_compra;
-			valor_compra = 0.85 * valor_compra;
+			aux = 0.2975 * aux;
+			System.out.printf("\nSituação: Alíquota = R$%.2f", aux);
 		}
-
-		System.out.printf("\nValor da compra após desconto: R$%.2f\nDesconto: R$%.2f", valor_compra, desconto);
 
 		sentinela.close();
 

@@ -1,4 +1,4 @@
-var telas = ["menu", "tela1"];
+var telas = ["menu", "fase"];
 var larguraJogo = 800;
 var alturaJogo = 600;
 
@@ -66,7 +66,7 @@ function menu() {
 	function fadeOutAcabou() {
 		
 		// Apenas inicia a primeira tela do jogo.
-		game.state.start("tela1");
+		game.state.start("fase");
 		
 	}
 	

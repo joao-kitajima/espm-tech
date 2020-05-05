@@ -15,8 +15,10 @@ function menu() {
 		game.load.spritesheet('estudante', 'estudante.png', 36, 48);
 		game.load.image('textura', 'TileMario.png');
 		game.load.tilemap('fase1', 'level1.json', null, Phaser.Tilemap.TILED_JSON);
-		game.load.spritesheet('estudante', 'estudante.png', 21, 29)
+		game.load.spritesheet('estudante', 'estudante.png', 21, 29);
+		game.load.spritesheet('moeda', 'coin.png', 32, 32)
 	};
+
 	
 	this.create = function () {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -29,7 +31,7 @@ function menu() {
 		camada.resizeWorld();
 		
 		
-		game.physics.arcade.gravity.y = 250;
+		
 		game.physics.arcade.enable(boneco, Phaser.Physics.ARCADE);
 		boneco.body.collideWorldBounds = true;
 		boneco.body.gravity.y = 500;
@@ -46,9 +48,29 @@ function menu() {
 		setas = game.input.keyboard.createCursorKeys();
 		tecla_pulo = setas.up;
 		tecla_pulo.onDown.add(pular);
+		
+		moedas = game.add.group();
+		moedas.enableBody = true;
+		moedas.physicsBodyType = Phaser.Physics.ARCADE;
+		criarMoeda(100, 1400);
+		
+		fadeIn();
 	};
 	
+		function criarMoeda(x, y) {
+		var moeda = game.add.sprite(x, y, 'moeda');
+		moedas.add(moeda);
+		game.physics.arcade.enable(moeda);			
+		moeda.animations.add("girando", [0, 1, 2, 3, 4, 5], 10, true);
+		moeda.animations.play("girando");
+		moeda.body.immovable = true;
+	}
+		function coletouMoeda(player, moeda) {
+			moeda.kill();
+		}
+	
 	this.update = function () {
+		game.physics.arcade.overlap(boneco, moedas, coletouMoeda);
 		game.physics.arcade.collide(boneco, camada);
 
 		if (setas.left.isDown) {

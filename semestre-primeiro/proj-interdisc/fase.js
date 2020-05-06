@@ -47,7 +47,9 @@ function menu() {
 		moedas = game.add.group();
 		moedas.enableBody = true;
 		moedas.physicsBodyType = Phaser.Physics.ARCADE;
-		criarMoeda(100, 1400);
+		criarMoeda(1168, 1424);
+		criarMoeda(688, 80);
+		criarMoeda(80, 880);
 		
 		fadeIn();
 	};

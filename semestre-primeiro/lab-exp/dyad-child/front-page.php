@@ -1,4 +1,9 @@
-<?php get_header(); ?>
+<?php
+/**
+ * @package Dyad
+ */
+
+get_header(); ?>
 
 	<main id="primary" class="content-area" role="main">
 		<?php while ( have_posts() ) : the_post(); ?>

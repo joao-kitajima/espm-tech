@@ -1,9 +1,10 @@
-var telas = ["menu"];
+var telas = ["menu","morte"];
 
 var cenario;
 var camada;
 var boneco;
 var setas;
+var btnreset;
 
 function menu() {
 	
@@ -12,7 +13,8 @@ function menu() {
 		game.load.tilemap('fase', 'fase.json', null, Phaser.Tilemap.TILED_JSON);
 		game.load.image('textura', 'supermario-textura.png');
 		game.load.spritesheet('estudante', 'estudante.png', 36, 48);
-		game.load.spritesheet('moeda', 'moeda.png', 32, 32)
+		game.load.spritesheet('moeda', 'moeda.png', 32, 32);
+		game.load.spritesheet("resetskin", "reset.png", 512, 512)
 	};
 
 	
@@ -50,6 +52,11 @@ function menu() {
 		criarMoeda(1168, 1424);
 		criarMoeda(688, 80);
 		criarMoeda(80, 880);
+		
+		btnreset = game.add.sprite(15, 1300, "resetskin");
+		btnreset.inputEnabled = true;
+		btnreset.input.useHandCursor = true;
+		btnreset.events.onInputDown.add(morte);
 		
 		fadeIn();
 	};
@@ -89,5 +96,12 @@ function menu() {
 			boneco.body.velocity.y = -300;			
 		}				
 	};	
+		
+		function morte() {
+			fadeOut(FimFadeOut);
+		}
+		function FimFadeOut() {
+			game.state.start("morte");
+		}
 	
 }

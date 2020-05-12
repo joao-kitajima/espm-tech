@@ -4,6 +4,7 @@ var cenario;
 var camada;
 var boneco;
 var setas;
+var pontuacao;
 
 function menu() {
 	
@@ -51,6 +52,11 @@ function menu() {
 		criarMoeda(688, 80);
 		criarMoeda(80, 880);
 		
+		var t = game.add.text(0, 0, "Pontuação: 0", { font: "24px Arial", fill: "#ffffff" });
+    		t.fixedToCamera = true;
+    		t.cameraOffset.setTo(0, 10);
+		pontuacao = 0;
+		
 		fadeIn();
 	};
 	
@@ -66,6 +72,8 @@ function menu() {
 		
 		function coletouMoeda(boneco, moeda) {
 			moeda.kill();
+			pontuacao = pontuacao + 1;
+			texto.setText("Pontuação: " + pontuacao);
 		}
 	
 	this.update = function () {

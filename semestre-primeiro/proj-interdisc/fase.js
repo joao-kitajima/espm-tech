@@ -58,6 +58,14 @@ function menu() {
 		btnreset.input.useHandCursor = true;
 		btnreset.events.onInputDown.add(morte);
 		
+		var estilo = {
+			font: "normal 20px Arial",
+			fill: "#ffffff"
+		};
+		texto = game.add.text(0, 0, "Pontuação: "+pontuacao, estilo);
+    		texto.fixedToCamera = true;
+    		texto.cameraOffset.setTo(0, 10);
+		
 		fadeIn();
 	};
 	
@@ -73,6 +81,8 @@ function menu() {
 		
 		function coletouMoeda(boneco, moeda) {
 			moeda.kill();
+			pontuacao = pontuacao + 1;
+			texto.setText("Pontuação: "+pontuacao);
 		}
 	
 	this.update = function () {

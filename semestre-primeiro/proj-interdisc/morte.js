@@ -3,6 +3,9 @@ function morte() {
 	var telam;
 	var foto;
 	var frase;
+	var estilo;
+	var vidaAtual = 3;
+	var vidas;
 	
 	this.preload = function () {
 		
@@ -17,13 +20,14 @@ function morte() {
 		foto = game.add.image(360,85, "humberto");
 		
 	var estilo = {
-			font: "normal 16px Arial",
+			font: "normal 16px 'Press Start 2P'",
 			fill: "#ffffff",
 			fontSize: "60px"
 		};
 		
 		frase = game.add.text(150, 500, "\"Ódio no coração\"", estilo);
 		
+		mostraVida();
 		setTimeout(Fade, 3000);
 		fadeIn();
 	};
@@ -35,7 +39,6 @@ function morte() {
 	function Fade() {
 		
 		fadeOut(fadeOutAcabou);
-		
 	}
 	
 	function fadeOutAcabou() {
@@ -44,5 +47,14 @@ function morte() {
 		
 	}
 	
-	
+	function mostraVida() {
+		estilo = {
+			font: "normal 16px 'Press Start 2P'",
+			fill: "#ffffff",
+			fontSize: "45px"
+		};
+		
+		vidas = game.add.text(200, 243, vidaAtual, estilo);
+		vidaAtual--;
+	}
 }

@@ -53,7 +53,9 @@ function menu() {
 		criarMoeda(688, 80);
 		criarMoeda(80, 880);
 		
-		btnreset = game.add.sprite(15, 1300, "resetskin");
+		btnreset = game.add.sprite(0, 0, "resetskin");
+		btnreset.fixedToCamera = true;
+		btnreset.cameraOffset.setTo(765,10);
 		btnreset.inputEnabled = true;
 		btnreset.input.useHandCursor = true;
 		btnreset.events.onInputDown.add(morte);

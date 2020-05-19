@@ -1,4 +1,4 @@
-var telas = ["menu","morte"];
+//var telas = ["menu","morte"];
 
 var cenario;
 var camada;

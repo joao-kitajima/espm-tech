@@ -11,6 +11,9 @@ var vida_texto;
 var pontuacao = 0;
 var pontuacao_texto;
 
+var gravidadeGlobal = 250;
+var velocidadeGumberto = 250;
+var gumbertos;
 WebFontConfig = {
     
 	active: function() {
@@ -38,6 +41,7 @@ function menu() {
 		game.load.spritesheet('estudante', 'estudante.png', 36, 48);
 		game.load.spritesheet('moeda', 'moeda.png', 32, 32);
 		game.load.spritesheet("resetskin", "reset.png", 512, 512);
+		game.load.spritesheet('inimigo','gumberto.png',32,33);
 		
 	};
 
@@ -71,6 +75,11 @@ function menu() {
 		
 		setas = game.input.keyboard.createCursorKeys();
 		
+		gumbertos = game.add.group();
+		gumbertos.enableBody = true;
+		gumbertos.physicsBodyType = Phaser.Physics.ARCADE;
+		criarGumberto(32, 1200);
+		
 		moedas = game.add.group();
 		moedas.enableBody = true;
 		moedas.physicsBodyType = Phaser.Physics.ARCADE;
@@ -91,6 +100,19 @@ function menu() {
 		
 	};
 	
+		
+		function criarGumberto(x, y) {
+			var gumberto = game.add.sprite(x, y, 'inimigo');
+			gumbertos.add(gumberto);
+			game.physics.arcade.enable(gumberto);			
+			gumberto.animations.add("andando", [0, 1, 2], 4, true);
+			gumberto.animations.add("pisado", [3, 3, 3, 3], 4, false);
+			gumberto.animations.play("andando");
+			gumberto.body.gravity.y = gravidadeGlobal;
+			gumberto.body.velocity.x = velocidadeGumberto;
+			gumberto.velocidadeReal = velocidadeGumberto;
+	}
+	
 		function criarMoeda(x, y) {
 			
 			var moeda = game.add.sprite(x, y, 'moeda');
@@ -102,11 +124,22 @@ function menu() {
 			moeda.body.immovable = true;
 			
 		}
+	
+	function gumbertoColidiuCenario(gumberto, tile) {
+		
+		if ((gumberto.body.blocked.left && gumberto.velocidadeReal < 0) ||
+			(gumberto.body.blocked.right && gumberto.velocidadeReal > 0)) {
+			gumberto.velocidadeReal = -gumberto.velocidadeReal;
+			gumberto.body.velocity.x = gumberto.velocidadeReal;
+		}
+		
+	}
 				
 	
 	this.update = function () {
 		
 		game.physics.arcade.overlap(boneco, moedas, coletouMoeda);
+		game.physics.arcade.collide(gumbertos, layer, gumbertoColidiuCenario);
 		game.physics.arcade.collide(boneco, camada);
 
 		if (setas.left.isDown) {

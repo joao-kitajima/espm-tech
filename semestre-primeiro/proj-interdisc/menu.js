@@ -1,4 +1,4 @@
-var telas = ["menu", "fase"];
+var telas = ["menu", "fase", "morte"];
 var larguraJogo = 800;
 var alturaJogo = 600;
 

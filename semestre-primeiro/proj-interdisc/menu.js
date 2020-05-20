@@ -1,73 +1,39 @@
-var telas = ["menu", "fase", "morte"];
+var telas = ["menu","fase","morte"];
 var larguraJogo = 800;
 var alturaJogo = 600;
 
 function menu() {
-	
-	var texto;
+	var name;
+	var btn;
 	
 	this.preload = function () {
-		
-		// Define a cor do fundo para azul claro.
-		game.stage.backgroundColor = "#0066ff";
-		
+		game.load.image("fundo", "ESPM.jpg");
+		game.load.image("logo", "logo.png")
+		game.load.spritesheet("button", "start.png",323,76);
 	};
 	
 	this.create = function () {
+		game.add.image(0,0, "fundo");
+		name = game.add.image(133,119, "logo");
+		btn = game.add.sprite(243,431, "button");
 		
-		// Especifica o formato básico do texto de forma similar
-		// ao atributo font do CSS normal. A diferença é que a cor
-		// é determinada pelo atributo fill, e não color como
-		// ocorre no CSS normal.
-		//
-		// Mais atributos e métodos dos textos e seus estilos:
-		// https://phaser.io/docs/2.6.2/Phaser.Text.html
-		var estilo = {
-			font: "normal 16px Arial",
-			fill: "#ffffff"
-		};
+		btn.animations.add("neutro", [0], 1, true);
+		btn.animations.add("click", [1], 1, true);
+		btn.animations.play("neutro");
 		
-		// Adiciona um texto na coordenada (0, 0) da tela,
-		// lembrando que (0, 0) está no canto superior esquerdo!
-		//
-		// Como iremos trabalhar com o sprite depois, precisamos
-		// armazenar em uma variável.
-		texto = game.add.text(0, 0, "Clique aqui para iniciar!", estilo);
+		btn.inputEnabled = true;
+		btn.input.useHandCursor = true;
+		btn.events.onInputDown.add(btnClicado);
 		
-		// Habilita que o texto seja clicado.
-		texto.inputEnabled = true;
-		// Altera o cursor do mouse quando ele estiver sobre
-		// o texto.
-		texto.input.useHandCursor = true;
-		// Diz qual função deve ser executada quando o texto
-		// for clicado.
-		texto.events.onInputDown.add(textoFoiClicado);
-		
-		// Faz o fade de entrada (de preto para transparente).
-		// Deve ser a última linha do create() para garantir
-		// que cubra todos os outros elementos.
 		fadeIn();
-		
 	};
 	
-	this.update = function () {
-		
-	};
-	
-	function textoFoiClicado() {
-		
-		// Em vez de simplesmente iniciar a tela, como
-		// estamos utilizando fade, devemos esperar o
-		// fade acabar para começar a outra tela!
-		fadeOut(fadeOutAcabou);
-		
+	function btnClicado() {
+		btn.animations.play("click");
+		fadeOut(telaJogo);
 	}
 	
-	function fadeOutAcabou() {
-		
-		// Apenas inicia a primeira tela do jogo.
+	function telaJogo () {
 		game.state.start("fase");
-		
 	}
-	
 }

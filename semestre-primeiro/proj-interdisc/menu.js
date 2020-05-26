@@ -1,9 +1,8 @@
-var telas = ["menu","fase","morte"];
+var telas = ["menu","fase","morte","vitoria"];
 var larguraJogo = 800;
 var alturaJogo = 600;
 
 function menu() {
-	var name;
 	var btn;
 	
 	this.preload = function () {
@@ -14,7 +13,7 @@ function menu() {
 	
 	this.create = function () {
 		game.add.image(0,0, "fundo");
-		name = game.add.image(133,119, "logo");
+		game.add.image(133,119, "logo");
 		btn = game.add.sprite(243,431, "button");
 		
 		btn.animations.add("neutro", [0], 1, true);

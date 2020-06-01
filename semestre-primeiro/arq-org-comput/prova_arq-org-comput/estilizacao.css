@@ -1,0 +1,26 @@
+.cabecalho {
+    margin: 0px;
+    padding: 50px;
+    background-color: #000;
+    color: #fff
+}
+
+.foto-humberto {
+    padding-left: 300px;
+    padding-right: 300px;
+}
+
+.fundo-pagina {
+	background-color:#00d775;
+	padding-top: 4px;
+}
+
+body {
+	background-color: #ffa4e8;
+}
+
+.integrantes {
+    padding-left: 380px;
+    padding-right: 300px;
+    color: #9417b3;
+}

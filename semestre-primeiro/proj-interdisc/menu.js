@@ -4,6 +4,7 @@ var alturaJogo = 600;
 
 function menu() {
 	var btn;
+	var key;
 	
 	this.preload = function () {
 		game.load.image("fundo", "ESPM.jpg");

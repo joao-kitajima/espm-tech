@@ -1,11 +1,11 @@
 /*
 Theme Name: ESPM Social - Blog
 Theme URI: http://localhost/wordpress/
-Description: Tema descendente do 'Dyad' por Automattic, desenvolvido exclusivamente para o Blog ESPM Social.
+Description: Bem-vindo(a) ao tema ESPM Social - Blog! Este tema foi desenvolvido durante o Laboratório Experimental do curso de graduação em Sistemas de Informação (TECH) para uso exclusivo da ESPM Social. Todos os direitos reservados!
 Author: João Kitajima
 Author URI: https://github.com/joao-kitajima/
 Template: dyad
-Version: 0.8
+Version: 1.0
 */
 
 .home .site-header, .blog .site-header {
@@ -50,6 +50,12 @@ Version: 0.8
 }
 
 /* CSS Adicional 
+body {
+    background-color: #fff;
+    color: #303030;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 .site-header {
     background-color: rgba(49, 169, 223, 0.6);    
 }
@@ -78,25 +84,18 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, 
 }
 
 .posts {
-    background-color: #3695d4;
+    background-color: #303030;
 }
 
 .comments-area-wrapper {
-    background-color: #3695d4;
+    background-color: #303030;
     color: #fff;
-}
-
-.has-post-thumbnail.is-singular:not(.home):not(.single-format-image):not(.page-template-eventbrite-index) .entry-header {
-    background: rgba(64, 64, 64, 0.3);
-    border-top: 1px solid rgba(64,64,64,0.2);
-    bottom: 0;
-    color: rgba(64,64,64,0.5);    
 }
 
 #commentform input[type="submit"] {
     background-color: #fff;
     color: #3695d4;
-        font-weight:800;
+    font-weight:800;
 }
 
 #commentform input[type="text"], #commentform input[type="email"], #commentform input[type="url"], #commentform textarea {
@@ -158,6 +157,61 @@ a {
 #infinite-handle span button, #infinite-handle span button:hover, #infinite-handle span button:focus, .posts-navigation a {
     background-color: #31a9df;
     color: #eee;
+}
+
+.comments-title {
+    border-bottom: 3px solid #fff;
+}
+
+.comment-author.vcard cite {
+    color: #fff;
+    font-size: 1.9rem;
+}
+
+.comment .reply:before {
+    color: #3695d4;
+}
+
+@media only screen and (max-width: 960px) {
+
+    .site-header, .is-scrolled .site-header, .blog .site-header, .home .site-header {
+        background-color: rgba(49, 169, 223, 0.6);
+    }
+
+    .menu-toggle {
+        background-color: #31a9df;
+        border: 0.3px solid #3695d4;    
+    }
+
+    #site-navigation ul a {
+        color: #fff;
+    }
+
+    #site-navigation ul ul a {
+        color: #fff;
+    }
+
+    #site-navigation ul li {
+        border: 1;
+        border-color: #fff;
+    }
+
+    #site-navigation ul ul li {
+        border: 1;
+        border-color: #ddd;
+        background-color: rgba(49, 169, 223, 0.0);
+    }
+    
+    .comments-title .add-comment-link {
+        color: #fff;
+        padding-top: 20px;
+    }
+
+    .comment .reply {
+        font-size: 1.6rem;
+        position: relative;
+    }
+    
 }
 
 */

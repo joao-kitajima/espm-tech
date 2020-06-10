@@ -36,7 +36,7 @@
 				?>
 
 				<div class="site-info">
-					<a href="<?php echo esc_url( __( 'https://www.facebook.com/ESPMSOCIAL/', 'dyad' ) ); ?>">
+					<a href="<?php echo esc_url( __( 'http://www.espmsocial.org/', 'dyad' ) ); ?>">
 						<?php printf( esc_html__( '&copy; 2020 - Todos os direitos reservados para ESPM Social', 'dyad' ), 'ESPM Social' ); ?></a>
 				</div>
 			</div>
